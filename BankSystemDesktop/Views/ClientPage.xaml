@@ -1,0 +1,70 @@
+﻿<Window x:Class="BankSystemDesktop.Views.ClientPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankSystemDesktop.Views"
+        mc:Ignorable="d"
+        Title="ClientPage" Height="450" Width="400">
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="Text">
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="30,0,30,0"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="41*"/>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="383*"/>
+        </Grid.RowDefinitions>
+
+
+        <TextBlock Style="{StaticResource Text}" Text="{Binding Client.Name, StringFormat=Фио: {0}}" TextTrimming="CharacterEllipsis" Grid.Column="0"></TextBlock>
+        <TextBlock Style="{StaticResource Text}" Text="{Binding Client.Contacts, StringFormat=Контакты: {0}}" TextTrimming="CharacterEllipsis" Grid.Column="1"></TextBlock>
+        <TextBlock Style="{StaticResource Text}" Text="{Binding Client.Id, StringFormat=Id: {0}}" Grid.Column="2" ></TextBlock>
+
+        <TabControl Grid.ColumnSpan="3" Grid.Row="1">
+            <TabItem Header="Депозиты">
+                <ListView x:Name="DepositsList" ItemsSource="{Binding Deposits}">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Код" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                                <GridViewColumn Header="Деньги" DisplayMemberBinding="{Binding Money}"></GridViewColumn>
+                                <GridViewColumn Header="Дата октрытия" DisplayMemberBinding="{Binding DateCreated}"></GridViewColumn>
+                                <GridViewColumn Header="Дата начилсения" DisplayMemberBinding="{Binding NextUpdate}"></GridViewColumn>
+                                <GridViewColumn Header="Дата закрытия" DisplayMemberBinding="{Binding DateEnd}"></GridViewColumn>
+                                <GridViewColumn Header="Тариф" DisplayMemberBinding="{Binding Rate.Name}"></GridViewColumn>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Header="Кредиты">
+                <ListView x:Name="CreditsList" ItemsSource="{Binding Credits}">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Код" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                                <GridViewColumn Header="Деньги" DisplayMemberBinding="{Binding Money}"></GridViewColumn>
+                                <GridViewColumn Header="Долг" DisplayMemberBinding="{Binding Dept}"></GridViewColumn>
+                                <GridViewColumn Header="Дата октрытия" DisplayMemberBinding="{Binding DateCreated}"></GridViewColumn>
+                                <GridViewColumn Header="Дата начилсения" DisplayMemberBinding="{Binding NextUpdate}"></GridViewColumn>
+                                <GridViewColumn Header="Дата закрытия" DisplayMemberBinding="{Binding DateEnd}"></GridViewColumn>
+                                <GridViewColumn Header="Тариф" DisplayMemberBinding="{Binding Rate.Name}"></GridViewColumn>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+
+        </TabControl>
+
+    </Grid>
+</Window>

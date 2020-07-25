@@ -1,0 +1,60 @@
+﻿<Window x:Class="BankSystemDesktop.Views.TransferWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankSystemDesktop.Views"
+        mc:Ignorable="d"
+        Title="TransferWindow" Height="326" Width="262">
+    <Window.Resources>
+        <Style x:Key="CBStyle" TargetType="ComboBox">
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        </Style>
+
+        <Style x:Key="TextStyle" TargetType="TextBox">
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        </Style>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Margin" Value="15"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Откдуа">
+            <ComboBox Style="{StaticResource CBStyle}" ItemsSource="{Binding Accounts}" SelectedItem="{Binding SelectedAccoutUser}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Rate.Name}"></TextBlock>
+                            <TextBlock Text="{Binding Money,StringFormat=Бюджет: {0}}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </GroupBox>
+        <GroupBox Header="Куда" Grid.Row="1">
+            <ComboBox Style="{StaticResource CBStyle}" ItemsSource="{Binding FriendAccounts}" SelectedItem="{Binding SelectedAccoutFriend}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Rate.Name}"></TextBlock>
+                            <TextBlock Text="{Binding Money,StringFormat=Бюджет: {0}}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </GroupBox>
+        <GroupBox Header="Сколько" Grid.Row="2">
+            <TextBox Style="{StaticResource TextStyle}" Text="{Binding Money}"></TextBox>
+        </GroupBox>
+        <Button IsEnabled="{Binding EnableBut}" Style="{StaticResource ButtonStyle}"  Grid.Row="3" Content="Отправить" Click="Button_Click"></Button>
+
+    </Grid>
+</Window>

@@ -1,0 +1,77 @@
+﻿<Window x:Class="BankSystemDesktop.Views.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankSystemDesktop.Views"
+        mc:Ignorable="d"
+        Title="AdminWindow" Height="450" Width="800" Closing="Window_Closing">
+    <Window.Resources>
+        <local:SelectToBoolConverter x:Key="SelectToBoolConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>   
+        <GroupBox Header="Департаменты" Grid.Column="1">
+            <ListBox ItemsSource="{Binding Departments}" SelectedItem="{Binding SelectDepartment}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                            <TextBlock Text="{Binding TypeClients}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Добавить" Click="AddDepartment_Click"></MenuItem>
+                        <MenuItem IsEnabled="{Binding SelectDepartment, Converter={StaticResource SelectToBoolConverter}}" Header="Удалить" Click="RemoveDepartment_Click"></MenuItem>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+            </ListBox>
+        </GroupBox>
+        <GroupBox Header="Выбранный департамент" Grid.Column="0">
+            <TabControl>
+                <TabItem Header="Рабочие">
+                    <ListView ItemsSource="{Binding Workers}" SelectedItem="{Binding SelectWorker}">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                                    <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                                    <GridViewColumn Header="Зарплата" DisplayMemberBinding="{Binding Salary}"></GridViewColumn>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem IsEnabled="{Binding SelectDepartment, Converter={StaticResource SelectToBoolConverter}}" Header="Добавить" Click="AddWorker_Click"></MenuItem>
+                                <MenuItem IsEnabled="{Binding SelectWorker, Converter={StaticResource SelectToBoolConverter}}" Header="Уволить" Click="RemoveWorker_Click"></MenuItem>
+                            </ContextMenu>
+                        </ListView.ContextMenu>
+                    </ListView>
+                </TabItem>
+                <TabItem Header="Клиенты">
+                    <ListView ItemsSource="{Binding Clients}" SelectedItem="{Binding SelectClient}">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"></GridViewColumn>
+                                    <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                                    <GridViewColumn Header="Контакты" DisplayMemberBinding="{Binding Сontacts}"></GridViewColumn>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem IsEnabled="{Binding SelectClient, Converter={StaticResource SelectToBoolConverter}}" Header="Подробнее" Click="SeeClient_Click"></MenuItem>
+                            </ContextMenu>
+                        </ListView.ContextMenu>
+                    </ListView>
+                </TabItem>
+            </TabControl>
+        </GroupBox>
+    </Grid>
+</Window>

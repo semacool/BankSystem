@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "QDdYbdALMYpRdb3ZmMHuc7pos2vLquvrfivciCJ9coPtSWiOCRurs69u8WwBTdVoBk3Y98ZUca60pLG3N3NiLA==",
+  "success": true,
+  "projectFilePath": "D:\\Programming\\VsStudioSaves\\AlphaBank\\BankSystemDesktop\\BankSystemDesktop.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\semac\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
