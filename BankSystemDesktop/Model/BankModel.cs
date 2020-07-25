@@ -180,12 +180,10 @@ namespace BankSystemDesktop.Model
         {
             return new ObservableCollection<Worker>(DataBase.Workers.Where(e=> e.IdDepartment == IdDepartment));
         }
-
         public ObservableCollection<IDepartment> GetDepartments()
         {
             return new ObservableCollection<IDepartment>(DataBase.Departments);
         }
-
         public ObservableCollection<Account> GetAccounts(uint IdClient, string TypeRate)
         {
             return new ObservableCollection<Account>(DataBase.Accounts.Where(e => e.IdClient == IdClient && e.Rate.TypeRate == TypeRate));
@@ -198,7 +196,7 @@ namespace BankSystemDesktop.Model
         public ObservableCollection<IRate> GetRates(uint IdClient, string TypeRate)
         {
             Client Client = DataBase.Clients.ToList().Find(e => e.Id == IdClient);
-            return new ObservableCollection<IRate>(DataBase.Rates.Where(e => e.TypeClient == Client.GetType().Name && e.TypeRate == TypeRate));
+            return new ObservableCollection<IRate>(DataBase.Rates.Where(e => e.TypeClient == Client.GetType().Name && e.TypeRate == TypeRate && e.Active == true));
         }
         public ObservableCollection<IRate> GetRates(uint IdDepartment)
         {

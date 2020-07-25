@@ -51,7 +51,7 @@ namespace BankSystemDesktop.Views
         private void CheckValues(string Name, string Salary, string Login, string Password) 
         {
             if (string.IsNullOrEmpty(Name)) throw new Exception("Введите имя");
-            if (!double.TryParse(Salary,out double s)) throw new Exception("Проверьте заплату");
+            if (!double.TryParse(Salary,out double s) || s < 0) throw new Exception("Проверьте заплату");
             if (string.IsNullOrEmpty(Login)) throw new Exception("Введите логин");
             if (string.IsNullOrEmpty(Password)) throw new Exception("Введите пароль");
         }

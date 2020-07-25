@@ -44,7 +44,7 @@ namespace BankSystemDesktop.ViewModels
         {
             if (SelectRate == null) throw new Exception("Выберите тип тарифа");
             if (Name == null) throw new Exception("Введите имя тарифа");
-            if (Percent == 0) throw new Exception("Проверьте введёный процент");
+            if (Percent <= 0) throw new Exception("Проверьте введёный процент");
             if (Month == 0) throw new Exception("Проверьте выбранный период");
         }
 
