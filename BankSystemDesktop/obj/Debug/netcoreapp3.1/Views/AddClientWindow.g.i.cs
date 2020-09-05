@@ -85,7 +85,7 @@ namespace BankSystemDesktop.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/BankSystemDesktop;component/views/addclientwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/BankSystemDesktop;V1.0.0.0;component/views/addclientwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\AddClientWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
