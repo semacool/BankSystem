@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 D:\Programming\VsStudioSaves\AlphaBank\BankSystemDesktop\App.xaml
-12487991568
+13-55799183
 
-27-1184004798
+301561533219
 194-1569661813
-Views\AddClientWindow.xaml;Views\AddDepartmentWindow.xaml;Views\AddRateWindow.xaml;Views\AddWorkerWindow.xaml;Views\AdminWindow.xaml;Views\AuthorizationWindow.xaml;Views\ClientPage.xaml;Views\ClientWindow.xaml;Views\CreditWindow.xaml;Views\DepositWindow.xaml;Views\TransferWindow.xaml;Views\WorkerWindow.xaml;
+Views\AccountWindow.xaml;Views\AddClientWindow.xaml;Views\AddDepartmentWindow.xaml;Views\AddRateWindow.xaml;Views\AddWorkerWindow.xaml;Views\AdminWindow.xaml;Views\AuthorizationWindow.xaml;Views\ClientPage.xaml;Views\ClientWindow.xaml;Views\CreditWindow.xaml;Views\DepositWindow.xaml;Views\TransferWindow.xaml;Views\WorkerWindow.xaml;
 
 False
 

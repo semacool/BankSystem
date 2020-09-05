@@ -8,7 +8,7 @@ using System.Text;
 
 namespace BankSystemDesktop.ViewModels
 {
-    class ClientPageViewModel : INotifyPropertyChanged
+    class ClientPageViewModel : ViewModel
     {
         BankModel Bank;
         public ObservableCollection<Client> ClientsFriends { get; set; }
@@ -46,12 +46,6 @@ namespace BankSystemDesktop.ViewModels
             ClientsFriends = Bank.GetClients();
         }
 
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string property)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
-        }
     }
 
 }

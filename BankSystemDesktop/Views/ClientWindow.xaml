@@ -67,7 +67,7 @@
             <GroupBox Header="Счета" Grid.Column="0">
                 <TabControl>
                     <TabItem Header="Депозиты">
-                        <ListView x:Name="DepositsList" ItemsSource="{Binding Deposits}">
+                        <ListView x:Name="DepositsList" ItemsSource="{Binding Deposits}" SelectedItem="{Binding SelectedAccount}">
                             <ListView.View>
                                 <GridView>
                                     <GridView.Columns>
@@ -83,12 +83,13 @@
                             <ListView.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Открыть депозит" Click="CreateDeposit_Click"></MenuItem>
+                                    <MenuItem Header="Посмотреть информацию" Click="Info_Click"></MenuItem>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                         </ListView>
                     </TabItem>
                     <TabItem Header="Кредиты">
-                        <ListView x:Name="CreditsList" ItemsSource="{Binding Credits}">
+                        <ListView x:Name="CreditsList" ItemsSource="{Binding Credits}" SelectedItem="{Binding SelectedAccount}">
                             <ListView.View>
                                 <GridView>
                                     <GridView.Columns>
@@ -105,6 +106,7 @@
                             <ListView.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Открыть Кредит" Click="CreateCredit_Click"></MenuItem>
+                                    <MenuItem Header="Информация о Кредите" Click="Info_Click"></MenuItem>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                         </ListView>

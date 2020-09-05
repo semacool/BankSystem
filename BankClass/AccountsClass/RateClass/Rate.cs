@@ -16,5 +16,10 @@ namespace BankClass.AccountsClass.RateClass
 
         public string TypeClient => typeof(T).Name;
         public string TypeRate => typeof(A).Name;
+
+        public override string ToString()
+        {
+            return $"{Name} - {Percent}%";
+        }
     }
 }

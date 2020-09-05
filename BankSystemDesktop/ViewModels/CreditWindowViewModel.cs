@@ -8,7 +8,7 @@ using System.Text;
 
 namespace BankSystemDesktop.ViewModels
 {
-    class CreditWindowViewModel : INotifyPropertyChanged
+    class CreditWindowViewModel : ViewModel
     {
 
         BankModel Bank;
@@ -78,10 +78,5 @@ namespace BankSystemDesktop.ViewModels
             Bank.AddAccount(Client.Id, SelectRate, DateEnd, Money);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string property)
-        {
-            PropertyChanged(this, new PropertyChangedEventArgs(property));
-        }
     }
 }

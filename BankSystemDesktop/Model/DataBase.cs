@@ -9,6 +9,8 @@ namespace BankSystemDesktop.Model
     {
         
         public static List<Worker> Workers { get; set; }
+        public static List<Transfer> Transfers { get; set; }
+
         public static List<Client> Clients { get; set; }
         public static List<Account> Accounts { get; set; }
         public static List<IRate> Rates { get; set; }
@@ -16,6 +18,8 @@ namespace BankSystemDesktop.Model
 
         static DataBase() 
         {
+
+            Transfers = new List<Transfer>();
             Workers = new List<Worker>();
             Clients = new List<Client>();
             Accounts = new List<Account>();

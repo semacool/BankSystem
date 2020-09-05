@@ -64,6 +64,28 @@ namespace BankSystemDesktop.Model
         }
         #endregion
 
+        //Коллекция транзакций
+        #region Transfers
+        static uint TransferId = 0;
+
+        //Добавить транзакцию
+        public void AddTransfer(uint IdAccount, double Money)
+        {
+            IAccount accountSource = DataBase.Accounts.Find(a => a.Id == IdAccount);
+
+            Transfer transfer = Factory.newTransfer(TransferId++,Money,accountSource);
+            DataBase.Transfers.Add(transfer);
+        }
+
+        //Удалить транзакцию
+        public void RemoveTransfer(uint Id)
+        {
+            Transfer transfer = DataBase.Transfers.ToList().Find(a => a.Id == Id);
+            DataBase.Transfers.Remove(transfer);
+        }
+
+        #endregion
+
         //Коллекция Клиентов
         #region Clients
         static uint ClientId = 0;
@@ -148,6 +170,7 @@ namespace BankSystemDesktop.Model
         {
             CheckClient(Rate.TypeClient, IdClient);
             Account account = Factory.newAccount(AccountId++, IdClient, Rate, DateEnd, Money);
+            account.ChangeMoney += NoteTrasfer;
             DataBase.Accounts.Add(account);
         }
         public void RemoveAccount(uint Id)
@@ -176,14 +199,21 @@ namespace BankSystemDesktop.Model
 
         #region UseDataBase 
 
+        public ObservableCollection<Transfer> GetTransfers(uint IdAccount)
+        {
+            return new ObservableCollection<Transfer>(DataBase.Transfers.Where(e => e.Account.Id == IdAccount));
+        }
+
         public ObservableCollection<Worker> GetWorkers(uint IdDepartment)
         {
             return new ObservableCollection<Worker>(DataBase.Workers.Where(e=> e.IdDepartment == IdDepartment));
         }
+
         public ObservableCollection<IDepartment> GetDepartments()
         {
             return new ObservableCollection<IDepartment>(DataBase.Departments);
         }
+
         public ObservableCollection<Account> GetAccounts(uint IdClient, string TypeRate)
         {
             return new ObservableCollection<Account>(DataBase.Accounts.Where(e => e.IdClient == IdClient && e.Rate.TypeRate == TypeRate));
@@ -229,6 +259,11 @@ namespace BankSystemDesktop.Model
             Worker = DataBase.Workers.ToList().Find(c => c.Login == Login && c.Password == Password);
             bool Access = Worker != null;
             return Access;
+        }
+
+        public void NoteTrasfer(IAccount account, double Money)
+        {
+            AddTransfer(account.Id, Money);
         }
         #endregion
     }

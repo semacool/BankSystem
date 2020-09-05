@@ -6,13 +6,32 @@ namespace BankClass
 {
     public abstract class Account : IAccount
     {
+        public event Action<IAccount, double> ChangeMoney;
         public uint Id { get; set; }
         public IRate Rate { get; set; }
-        public double Money { get; set; }
+        double money;
+        public double Money 
+        {
+            get => money;
+            set
+            {
+                if (money > value) ChangeMoney?.Invoke(this, value - money);
+                else ChangeMoney?.Invoke(this, value - money);
+                money = value;
+            }
+        }
         public uint IdClient { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime NextUpdate { get; set; }
         public DateTime DateEnd { get; set; }
+
+        public void ToTransfer(double Money, IAccount account)
+        {
+            if (this.Money < Money) throw new Exception("Недостаточно средств");
+            if (Money <= 0) throw new Exception("Проверьте правильность сумыы");
+            this.Money -= Money;
+            account.Money += Money;
+        }
 
         public virtual void Update() { }
     }

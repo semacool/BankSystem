@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace BankSystemDesktop.ViewModels
 {
-    class TransferWindowViewModel : INotifyPropertyChanged
+    class TransferWindowViewModel : ViewModel
     {
         BankModel Bank;
         public ObservableCollection<Account> Accounts { get; set; }
@@ -61,19 +61,7 @@ namespace BankSystemDesktop.ViewModels
 
         public void ToTransfer()
         {
-
-
-            if (SelectedAccoutUser.Money < Money) throw new Exception("Не хватает баланса");
-            if (Money == 0) throw new Exception("Ошибка. Проверетье правильность введёной суммы.");
-
-            SelectedAccoutUser.Money -= Money;
-            SelectedAccoutFriend.Money += Money;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string property)
-        {
-            PropertyChanged(this, new PropertyChangedEventArgs(property));
+            selectedAccoutUser.ToTransfer(Money, selectedAccoutFriend);
         }
     }
 }

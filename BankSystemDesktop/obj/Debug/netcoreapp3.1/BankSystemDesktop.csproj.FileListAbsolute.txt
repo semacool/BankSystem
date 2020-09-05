@@ -90,3 +90,5 @@ D:\Programming\VsStudioSaves\AlphaBank\BankSystemDesktop\obj\Debug\netcoreapp3.1
 D:\Programming\VsStudioSaves\AlphaBank\BankSystemDesktop\obj\Debug\netcoreapp3.1\BankSystemDesktop.dll
 D:\Programming\VsStudioSaves\AlphaBank\BankSystemDesktop\obj\Debug\netcoreapp3.1\BankSystemDesktop.pdb
 D:\Programming\VsStudioSaves\AlphaBank\BankSystemDesktop\obj\Debug\netcoreapp3.1\BankSystemDesktop.genruntimeconfig.cache
+D:\Programming\VsStudioSaves\AlphaBank\BankSystemDesktop\obj\Debug\netcoreapp3.1\Views\AccountWindow.g.cs
+D:\Programming\VsStudioSaves\AlphaBank\BankSystemDesktop\obj\Debug\netcoreapp3.1\Views\AccountWindow.baml

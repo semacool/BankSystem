@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BankSystemDesktop.ViewModels
 {
-    class AddRateWindowViewModel : INotifyPropertyChanged
+    class AddRateWindowViewModel : ViewModel
     {
         BankModel Bank;
         public byte month;
@@ -46,12 +46,6 @@ namespace BankSystemDesktop.ViewModels
             if (Name == null) throw new Exception("Введите имя тарифа");
             if (Percent <= 0) throw new Exception("Проверьте введёный процент");
             if (Month == 0) throw new Exception("Проверьте выбранный период");
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string property) 
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
     }
 }

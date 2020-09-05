@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace BankSystemDesktop.ViewModels
 {
-    public class ClientWindowViewModel : INotifyPropertyChanged
+    public class ClientWindowViewModel : ViewModel
     {
         BankModel Bank;
         public ObservableCollection<Client> ClientsFriends { get; set; }
@@ -43,6 +43,8 @@ namespace BankSystemDesktop.ViewModels
             }
         }
 
+        public Account SelectedAccount { get; set; }
+
         public ClientWindowViewModel(Client Client)
         {
             Bank = new BankModel(); 
@@ -59,13 +61,5 @@ namespace BankSystemDesktop.ViewModels
             Credits = new ObservableCollection<Account>(Bank.GetAccounts(Client.Id, "Credit"));
             Deposits = new ObservableCollection<Account>(Bank.GetAccounts(Client.Id, "Deposit"));
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string property) 
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs( property));
-        }
-
-
     }
 }

@@ -9,7 +9,7 @@ using System.Text;
 
 namespace BankSystemDesktop.ViewModels
 {
-    class DepositWindowViewModel : INotifyPropertyChanged
+    class DepositWindowViewModel : ViewModel
     {
         BankModel Bank;
 
@@ -75,12 +75,6 @@ namespace BankSystemDesktop.ViewModels
         {
             DateTime DateEnd = DateTime.Now + TimeSpan.FromDays(Year * 365);
             Bank.AddAccount(Client.Id, SelectRate, DateEnd, Money);
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string property)
-        {
-            PropertyChanged(this, new PropertyChangedEventArgs(property));
         }
     }
 }

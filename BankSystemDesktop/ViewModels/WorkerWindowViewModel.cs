@@ -9,7 +9,7 @@ using System.Windows.Automation;
 
 namespace BankSystemDesktop.ViewModels
 {
-    class WorkerWindowViewModel : INotifyPropertyChanged
+    class WorkerWindowViewModel : ViewModel
     {
         BankModel Bank;
 
@@ -80,13 +80,5 @@ namespace BankSystemDesktop.ViewModels
             Rates = Bank.GetRates(Worker.IdDepartment);
             Clients = Bank.GetClients(Worker.IdDepartment);
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string property)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
-        }
-
-
     }
 }

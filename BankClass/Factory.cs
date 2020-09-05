@@ -25,6 +25,15 @@ namespace BankClass
             return worker;
         }
 
+
+        //Transfer
+        static public Transfer newTransfer(uint Id,double Money, IAccount account)
+        {
+            Transfer transfer = new Transfer(Id, account, Money);
+
+            return transfer;
+        }
+
         //Client
         static public Client newClient(
           uint Id, string Name, string Contacts, uint IdDepartment, string TypeClient,string Login, string Password)
@@ -226,6 +235,7 @@ namespace BankClass
                         Id = Id,
                         Rate = Rate,
                         DateCreated = DateTime.Now,
+                        NextUpdate = DateTime.Now + Rate.TimeForNext,
                         DateEnd = DateEnd,
                         IdClient = IdClient,
                         Money = Money,
@@ -238,6 +248,7 @@ namespace BankClass
                         Id = Id,
                         Rate = Rate,
                         DateCreated = DateTime.Now,
+                        NextUpdate = DateTime.Now + Rate.TimeForNext,
                         DateEnd = DateEnd,
                         IdClient = IdClient,
                         Money = Money,

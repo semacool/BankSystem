@@ -10,7 +10,7 @@ namespace BankSystemDesktop.ViewModels
 {
 
     
-    class AdminWindowViewModel : INotifyPropertyChanged
+    class AdminWindowViewModel : ViewModel
     {
         BankModel Bank;
 
@@ -112,12 +112,6 @@ namespace BankSystemDesktop.ViewModels
                 Workers = Bank.GetWorkers(SelectDepartment.Id);
                 Clients = Bank.GetClients(SelectDepartment.Id);
             }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string prop) 
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
     }
 }

@@ -58,5 +58,10 @@ namespace BankSystemDesktop.Views
         {
             new AuthorizationWindow().Show();
         }
+
+        private void Info_Click(object sender, RoutedEventArgs e)
+        {
+            new AccountWindow((DataContext as ClientWindowViewModel).SelectedAccount).Show();
+        }
     }
 }

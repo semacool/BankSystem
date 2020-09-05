@@ -1,0 +1,35 @@
+﻿<Window x:Class="BankSystemDesktop.Views.AccountWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankSystemDesktop.Views"
+        mc:Ignorable="d"
+        Title="AccountWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="TBStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Style="{StaticResource TBStyle}" Grid.Row="0" Text="{Binding Account.Rate, StringFormat=Тариф: {0}}"/>
+        <TextBlock Style="{StaticResource TBStyle}" Grid.Row="1" Text="{Binding Account.Money, StringFormat=Баланс: {0}}"/>
+        <TextBlock Style="{StaticResource TBStyle}" Grid.Row="2" Text="{Binding Account.DateCreated, StringFormat=Дата создания: {0}}"/>
+        <TextBlock Style="{StaticResource TBStyle}" Grid.Row="3" Text="{Binding Account.NextUpdate, StringFormat=Дата обновление счёта (по тарифу): {0}}"/>
+        <TextBlock Style="{StaticResource TBStyle}" Grid.Row="4" Text="{Binding Account.DateEnd, StringFormat=Дата закрытия счёта: {0}}"/>
+        <GroupBox Header="История" Grid.Row="5">
+            <ListBox ItemsSource="{Binding History}"/>
+        </GroupBox>
+    </Grid>
+</Window>
