@@ -15,6 +15,7 @@ namespace BankClass
             get => money;
             set
             {
+                if (value < 0) throw new Exception("Недостаточно средств");
                 if (money > value) ChangeMoney?.Invoke(this, value - money);
                 else ChangeMoney?.Invoke(this, value - money);
                 money = value;
@@ -27,7 +28,7 @@ namespace BankClass
 
         public void ToTransfer(double Money, IAccount account)
         {
-            if (this.Money < Money) throw new Exception("Недостаточно средств");
+            
             if (Money <= 0) throw new Exception("Проверьте правильность сумыы");
             this.Money -= Money;
             account.Money += Money;
